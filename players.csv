@@ -1,0 +1,11 @@
+name,gender,max_games,blocker,no_pair_with
+Alice,F,5, 2024-09-20,Charlie
+Bob,M,5,2024-09-21,
+Charlie,M,5,2024-09-22,Alice
+Diana,F,5,2024-09-21,
+Eve,F,3,2024-09-23,
+Frank,M,5,2024-09-24,
+Grace,F,5,2024-09-22,
+Hank,M,5,2024-09-25,
+Ivy,F,5,2024-09-20,
+Jake,M,5,2024-09-24,Ivy
