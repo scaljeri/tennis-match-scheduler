@@ -6,7 +6,7 @@ import pandas as pd
 def add_players_to_games(games = [], gender = 'M/F', max_per_game = 4 ):
   for idx, d in enumerate(dates):
     random.shuffle(players)
-    sorted_players = sorted(players, key=lambda player: played[player])
+    sorted_players = sorted(players, key=lambda player: played[player] / max_games[player])
     if idx < len(games):
       game = games[idx]
     else:
@@ -53,6 +53,7 @@ for index, row in df_setup.iterrows():
     genders[name] = row['gender']
     no_pair[name] = row['no_pair_with']
 
+print("Player unavailabilities:")
 for idx, p in enumerate(players):
     print(f"{p.ljust(10)} {idx}: {', '.join(blocker[p])}")
 
@@ -64,12 +65,11 @@ if args.mix_only:
 else:
   games = add_players_to_games()
 
+print("\nSchedule:")
 for idx, g in enumerate(games):
   game_players = list(map(lambda name: f"{name}({genders[name]})", g))
-  # print(game_players)
-  # print(f"len={len(dates)} idx={idx}")
-
   print(f"{dates[idx]}: {', '.join(game_players)}")
 
+print("\nStats:")
 for p in players:
   print(f"{p.ljust(10)} ({played[p]})")
